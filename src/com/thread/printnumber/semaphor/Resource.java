@@ -8,11 +8,11 @@ public class Resource {
 
 	private volatile int i;
 
-	public void printOddEven(String name, Semaphore odd) throws InterruptedException {
+	public void printOddEven(String name, Semaphore semaphore) throws InterruptedException {
 
 		
 		while (i < 10) {
-			odd.acquire();
+			semaphore.acquire();
 			boolean oddAndEvn = isEven(i);
 			if (oddAndEvn) {
 				out.println(" Thread Name: " + name + " Even Number# " + i);
@@ -22,7 +22,7 @@ public class Resource {
 			}
 			i++;
 			
-			odd.release();
+			semaphore.release();
 			Thread.sleep(1000);
 			
 		}
